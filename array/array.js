@@ -32,11 +32,54 @@ class MyArray {
         // Retorna los datos actualizados
         return this.data;
     }
+
+    pop() {
+        // Aquí guardamos el ultimo elemento en una constante
+        const lastImtem = this.data[this.length - 1];
+
+        // Eliminamos el elemento
+        delete this.data[this.length - 1];
+
+        // Bajamos el tamaño del elemento -1 
+        this.length--;
+
+        // Devolvemos el elemento eliminado
+        return lastImtem
+    }
+
+    delete(index) {
+        const item = this.data[index];
+        this.shiftIndex(index);
+
+        return item;
+    }
+
+    shiftIndex(index) {
+
+        // Organizamos los index
+        for (let i = index; i < this.length - 1; i++) {
+            this.data[i] = this.data[i + 1];
+        }
+
+        // Eliminamos el index del elemento
+        delete this.data[this.length - 1];
+
+        // Bajamos el tamaño del elemento
+        this.length--;
+    }
+
 }
 
 const myArray = new MyArray();
 
 myArray.push("Dilan");
 myArray.push("Daniela");
+myArray.push("Gabriela");
 
-console.log(myArray.get(1));
+// console.log(myArray.get(1));
+
+// console.log(myArray.pop());
+
+console.log(myArray.delete(2))
+
+console.log(myArray.data);
