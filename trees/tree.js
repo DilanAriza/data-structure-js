@@ -37,6 +37,33 @@ class BinarySearchTree {
             }
         }
     }
+
+    search(index) {
+        if (this.root === null) {
+            console.log('No hay ningun elemento en el Binary Search Tree');
+        } else {
+            let currentNode = this.root;
+            while (true) {
+                if (index === currentNode.value) {
+                    return currentNode;
+                } else {
+                    if (index < currentNode.value) {
+                        if ((currentNode.left) && index === currentNode.left) {
+                            return currentNode.left;
+                        }
+
+                        currentNode = currentNode.left;
+                    } else {
+                        if ((currentNode.right) && index === currentNode.right) {
+                            return currentNode.right;
+                        }
+
+                        currentNode = currentNode.right;
+                    }
+                }
+            }
+        }
+    }
 }
 
 const tree = new BinarySearchTree();
@@ -51,3 +78,11 @@ tree.insert(8);
 console.log(tree);
 tree.insert(4);
 console.log(tree);
+tree.insert(14);
+console.log(tree);
+tree.insert(10);
+console.log(tree);
+tree.insert(7);
+console.log(tree);
+
+console.log(tree.search(8));
